@@ -14,31 +14,31 @@ export default function Navbar() {
     };
 
     const handleDeleteCharacter = (id) => {
-      // Filter out the character with the given ID
-      const updatedCharacters = characters.filter(character => character.id !== id);
-      // Update local storage with the new characters list
-      localStorage.setItem('characters', JSON.stringify(updatedCharacters));
-      // Refresh the component by reloading the page
-      window.location.reload();
-  };
+        // Filter out the character with the given ID
+        const updatedCharacters = characters.filter(character => character.id !== id);
+        // Update local storage with the new characters list
+        localStorage.setItem('characters', JSON.stringify(updatedCharacters));
+        // Refresh the component by reloading the page
+        window.location.reload();
+    };
 
     return (
-        <nav className={`fixed lg:static lg:h-screen h-auto w-full lg:w-1/5 bg-gray-100 p-4 overflow-y-auto z-20 ${isOpen ? '' : 'hidden'} lg:block`}>
-            {/* Menu button for mobile view */}
+        <nav className={`fixed lg:static lg:h-screen h-auto w-full lg:w-1/5 bg-gray-100 p-4 overflow-y-auto z-20`}>
+            {/* Mobile menu button */}
             <div className="lg:hidden flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold">Character AI</h2>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="text-gray-600 hover:text-gray-900 focus:outline-none"
                 >
-                    {/* Menu button icon */}
+                    {/* Hamburger icon */}
                     {isOpen ? 'Close' : 'Menu'}
                 </button>
             </div>
 
             {/* Navbar content */}
             <div className={`${isOpen ? 'block' : 'hidden'} lg:block`}>
-                <h2 className="text-2xl font-bold mb-4 hidden lg:block">Character AI</h2>
+                <h2 className="text-2xl font-bold mb-4 lg:block hidden">Character AI</h2>
                 <div className="menu">
                     <Link to="/" className="block mb-2">Home</Link>
                     <button
