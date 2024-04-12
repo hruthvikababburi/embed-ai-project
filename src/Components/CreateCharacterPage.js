@@ -35,7 +35,7 @@ const CreateCharacterPage = () => {
     };
 
     return (
-        <div className="flex-grow p-4 pt-32">
+        <div className="flex-grow p-4 pt-32 md:pt-5">
             <h2 className="text-3xl font-bold mb-4">Create a New Character</h2>
 
             {/* Form for creating a new character */}

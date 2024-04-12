@@ -9,10 +9,10 @@ const App = () => {
     return (
         <Router>
             <div className="flex">
-                {/* Include Navbar at the top level */}
+                
                 <Navbar />
 
-                {/* Main content area */}
+                
                 <div className="flex-grow">
                     <Routes>
                         <Route exact path="/" element={<HomePage/>} />
