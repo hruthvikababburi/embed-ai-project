@@ -1,13 +1,16 @@
-import React from 'react'
-import Navbar from './Navbar'
+import React from 'react';
 
-export default function Homepage() {
-  return (
-    <div className='flex'>
-      <Navbar/>
-      <div>
-        Homepage
-      </div>
-    </div>
-  )
-}
+const Homepage = ({ charactersData }) => {
+    return (
+        <div className="flex">
+            <div className="flex-grow p-4">
+                <h2 className="text-3xl font-bold mb-4">Welcome to Character AI</h2>
+                <p>
+                    Explore the world of AI characters, create your own, and chat with them!
+                </p>
+            </div>
+        </div>
+    );
+};
+
+export default Homepage;
