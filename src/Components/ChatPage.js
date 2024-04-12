@@ -38,7 +38,7 @@ const ChatPage = () => {
     if (!character) return <div>Loading character...</div>;
 
     return (
-        <div className="flex-grow p-4">
+        <div className="flex-grow p-4 pt-32">
             <div className='flex flex-col justify-center items-center'> 
                 <img src={character.image} alt={character.name} className="mb-4 w-20 h-20 rounded-full" />
                 <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
