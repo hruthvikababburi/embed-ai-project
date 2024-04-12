@@ -13,6 +13,15 @@ export default function Navbar() {
         navigate('/createcharacter');
     };
 
+    const handleDeleteCharacter = (id) => {
+      // Filter out the character with the given ID
+      const updatedCharacters = characters.filter(character => character.id !== id);
+      // Update local storage with the new characters list
+      localStorage.setItem('characters', JSON.stringify(updatedCharacters));
+      // Refresh the component by reloading the page
+      window.location.reload();
+  };
+
     return (
         <nav className={`fixed lg:static lg:h-screen h-auto w-full lg:w-1/5 bg-gray-100 p-4 overflow-y-auto z-20 ${isOpen ? '' : 'hidden'} lg:block`}>
             {/* Menu button for mobile view */}
@@ -42,7 +51,15 @@ export default function Navbar() {
                     <ul className="list-none pl-0">
                         {characters.map(character => (
                             <li key={character.id} className="mb-2">
-                                <Link to={`/chat/${character.id}`} className="text-blue-500">{character.name}</Link>
+                               <div className='flex justify-between'>
+                                    <Link to={`/chat/${character.id}`} className="text-blue-500">{character.name}</Link>
+                                      <button
+                                              className="text-red-500"
+                                              onClick={() => handleDeleteCharacter(character.id)}
+                                          >
+                                              Delete
+                                      </button>
+                               </div>
                             </li>
                         ))}
                     </ul>

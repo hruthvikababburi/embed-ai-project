@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-
+const sampleResponses = [
+    'Hello! How can I assist you today?',
+    'That’s an interesting point of view! Can you tell me more?',
+    'I love discussing new technologies. What do you want to chat about?',
+    'Exploring new places is so exciting! What’s your dream destination?',
+    'Hi there! What’s your favorite sport?',
+];
 
 const ChatPage = () => {
     const { id } = useParams();
@@ -23,10 +29,8 @@ const ChatPage = () => {
         setChatHistory(prevHistory => [...prevHistory, { sender: 'You', message: input }]);
 
         // Simulate a response from the character
-        if (character && character.responses.length > 0) {
-            const randomResponse = character.responses[Math.floor(Math.random() * character.responses.length)];
-            setChatHistory(prevHistory => [...prevHistory, { sender: character.name, message: randomResponse }]);
-        }
+        const randomResponse = sampleResponses[Math.floor(Math.random() * sampleResponses.length)];
+        setChatHistory(prevHistory => [...prevHistory, { sender: character.name, message: randomResponse }]);
 
         setInput('');
     };
@@ -34,35 +38,34 @@ const ChatPage = () => {
     if (!character) return <div>Loading character...</div>;
 
     return (
-        <div className="flex">
-            
-            <div className="flex-grow p-4">
-                <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
-                <div className="border rounded p-4 mb-4 overflow-y-auto h-64">
-                    {chatHistory.map((chat, index) => (
-                        <p key={index} className={`mb-2 ${chat.sender === 'You' ? 'text-right' : 'text-left'}`}>
-                            <strong>{chat.sender}:</strong> {chat.message}
-                        </p>
-                    ))}
-                </div>
-                <form onSubmit={handleSendMessage}>
-                    <div className="flex items-center space-x-2">
-                        <input
-                            type="text"
-                            className="flex-grow p-2 border rounded"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="submit"
-                            className="bg-blue-500 text-white py-2 px-4 rounded"
-                        >
-                            Send
-                        </button>
-                    </div>
-                </form>
+        <div className="flex-grow p-4">
+            <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
+            <img src={character.image} alt={character.name} className="mb-4 w-20 h-20" />
+            <p className="mb-4">{character.description}</p>
+            <div className="border rounded p-4 mb-4 overflow-y-auto h-64">
+                {chatHistory.map((chat, index) => (
+                    <p key={index} className={`mb-2 ${chat.sender === 'You' ? 'text-right' : 'text-left'}`}>
+                        <strong>{chat.sender}:</strong> {chat.message}
+                    </p>
+                ))}
             </div>
+            <form onSubmit={handleSendMessage}>
+                <div className="flex items-center space-x-2">
+                    <input
+                        type="text"
+                        className="flex-grow p-2 border rounded"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        required
+                    />
+                    <button
+                        type="submit"
+                        className="bg-blue-500 text-white py-2 px-4 rounded"
+                    >
+                        Send
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };

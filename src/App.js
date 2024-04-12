@@ -1,28 +1,28 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Homepage from './Components/Homepage';
-import CreateCharacterPage from './Components/CreateCharacterPage';
-import ChatPage from './Components/ChatPage';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
+import HomePage from './Components/Homepage';
+import ChatPage from './Components/ChatPage';
+import CreateCharacterPage from './Components/CreateCharacterPage';
 
-function App() {
+const App = () => {
     return (
         <Router>
             <div className="flex">
-                {/* Navbar remains consistent across all pages */}
+                {/* Include Navbar at the top level */}
                 <Navbar />
 
                 {/* Main content area */}
-                <div className="flex-grow p-4 lg:ml-1/5">
+                <div className="flex-grow">
                     <Routes>
-                        <Route path="/" element={<Homepage />} />
-                        <Route path="/createcharacter" element={<CreateCharacterPage />} />
-                        <Route path="/chat/:id" element={<ChatPage />} />
+                        <Route exact path="/" element={<HomePage/>} />
+                        <Route path="/chat/:id" element={<ChatPage/>} />
+                        <Route path="/createcharacter" element={<CreateCharacterPage/>} />
                     </Routes>
                 </div>
             </div>
         </Router>
     );
-}
+};
 
 export default App;
