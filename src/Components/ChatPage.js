@@ -2,7 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const sampleResponses = [
+    
     'Hello! How can I assist you today?',
+    'Hey',
+    'Hello! How are you doing?',
+    'Hey hello!',
+    'Heyya!',
+    'Watsup!',
+    'Hey, What are you up to?',
+    'Ok',
+    'Ok, What do you want me to do',
+    'What do you mean?',
+    'Sorry, I did not get you!',
+    'Sorry, Could you repeat?',
+    'Can you explain what you said?',
+    'What are your interests?',
+    'What do you say?',
+    'What is your conclusion?',
+    'Ok, Bye',
+    'Bye',
+    'Will talk to you later!',
+    'How do you feel today?',
+    'How was your day?',
+    'How is your day going?',
+    'I am feeling ecstatic!',
+    'Such a pleasant day, right?',
     'That’s an interesting point of view! Can you tell me more?',
     'I love discussing new technologies. What do you want to chat about?',
     'Exploring new places is so exciting! What’s your dream destination?',
@@ -35,7 +59,7 @@ const ChatPage = () => {
         setInput('');
     };
 
-    if (!character) return <div>Loading character...</div>;
+    if (!character) return <div className='text-center'>Loading character...</div>;
 
     return (
         <div className="flex-grow p-4 pt-32">
