@@ -39,9 +39,11 @@ const ChatPage = () => {
 
     return (
         <div className="flex-grow p-4">
-            <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
-            <img src={character.image} alt={character.name} className="mb-4 w-20 h-20" />
-            <p className="mb-4">{character.description}</p>
+            <div className='flex flex-col justify-center items-center'> 
+                <img src={character.image} alt={character.name} className="mb-4 w-20 h-20 rounded-full" />
+                <h2 className="text-3xl font-bold mb-4">{character.name}</h2>
+                <p className="mb-4">{character.description}</p>
+            </div>
             <div className="border rounded p-4 mb-4 overflow-y-auto h-64">
                 {chatHistory.map((chat, index) => (
                     <p key={index} className={`mb-2 ${chat.sender === 'You' ? 'text-right' : 'text-left'}`}>
