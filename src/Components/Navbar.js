@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { IoIosMenu } from "react-icons/io";
+import { IoIosCloseCircle } from "react-icons/io";
+import { MdDeleteForever } from "react-icons/md";
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -32,7 +35,7 @@ export default function Navbar() {
                     className="text-gray-600 hover:text-gray-900 focus:outline-none"
                 >
                     {/* Hamburger icon */}
-                    {isOpen ? 'Close' : 'Menu'}
+                    {isOpen ? <IoIosCloseCircle className='text-3xl'/> : <IoIosMenu className='text-3xl'/>}
                 </button>
             </div>
 
@@ -57,7 +60,7 @@ export default function Navbar() {
                                               className="text-red-500"
                                               onClick={() => handleDeleteCharacter(character.id)}
                                           >
-                                              Delete
+                                              <MdDeleteForever className='text-xl'/>
                                       </button>
                                </div>
                             </li>
